@@ -58,6 +58,7 @@ setup(
     python_requires=PYTHON_VERSION,
     packages=[NAME],
     install_requires=REQUIRES,
+    include_package_data=True,
     license=LICENSE,
     description=DESCRIPTION,
     long_description=README,
