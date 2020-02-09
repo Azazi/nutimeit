@@ -1,6 +1,6 @@
 import os
 import re
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 # Run setup from current path.
@@ -35,6 +35,7 @@ def get_readme():
 NAME = 'nutimeit'
 VERSION = get_version(NAME)
 README = get_readme()
+PACKAGES = find_packages()
 REQUIRES = []
 DESCRIPTION = 'Measure aggregate execution time of module-wide functions'
 DESCRIPTION_CONTENT_TYPE = 'text/markdown'
@@ -56,7 +57,7 @@ setup(
     name=NAME,
     version=VERSION,
     python_requires=PYTHON_VERSION,
-    packages=[NAME],
+    packages=PACKAGES,
     install_requires=REQUIRES,
     include_package_data=True,
     license=LICENSE,
