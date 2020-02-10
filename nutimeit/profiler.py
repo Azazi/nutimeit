@@ -16,3 +16,10 @@ def instrument(f):
 
         return result
     return timed
+
+
+def _decorate_module(m):
+    functions = _inspect.getmembers(m, _inspect.isfunction)
+
+    for function in functions:
+        setattr(m, function[0], instrument(function[1]))
