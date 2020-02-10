@@ -23,7 +23,7 @@ class CacheStore:
             key (str) -- The name of the Callable
 
         Returns:
-            (dict) -- A dictionaory representation of the Callable result.
+            (dict) -- A dictionaory representation of the Callable result
         """
         return dict(cls._results.get(key, {}))
 
