@@ -37,3 +37,12 @@ class TestProfiler(unittest.TestCase):
         result = self.store.get_result(callable_name)
         self.assertTrue(result)
         self.assertEqual(result['count'], calls)
+
+    def test_instrument_no_calls(self):
+        @self.instrument
+        def f():
+            pass
+
+        callable_name = '.'.join([__name__, 'f'])
+        result = self.store.get_result(callable_name)
+        self.assertFalse(result)
