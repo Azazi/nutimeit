@@ -5,6 +5,11 @@ from nutimeit._store import Store as _Store
 
 
 def instrument_module(m):
+    """Profiles the execution time of all callables within a module.
+
+    Arguments:
+        m (module) -- The module to profile
+    """
     _decorate_module(m)
     classes = _inspect.getmembers(m, _inspect.isclass)
 
@@ -13,6 +18,14 @@ def instrument_module(m):
 
 
 def instrument(f):
+    """Profiles the execution time of a callable.
+
+    Arguments:
+        f (function) -- The callable to profile
+
+    Returns:
+        (any) -- The return value of the original callable
+    """
     def timed(*args, **kw):
         ts = _time.time()
         result = f(*args, **kw)
@@ -28,6 +41,11 @@ def instrument(f):
 
 
 def _decorate_module(m):
+    """Adds the instrument decorator to all callables within a module.
+
+    Arguments:
+        m (module) -- The module to profile.
+    """
     functions = _inspect.getmembers(m, _inspect.isfunction)
 
     for function in functions:
