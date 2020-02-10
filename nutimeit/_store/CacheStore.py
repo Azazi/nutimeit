@@ -40,3 +40,7 @@ class CacheStore:
 
         cls._results[name].update_count()
         cls._results[name].update_time(time)
+
+    @classmethod
+    def clear_results(cls):
+        cls._results = dict()
