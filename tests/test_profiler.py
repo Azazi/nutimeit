@@ -12,3 +12,14 @@ class TestProfiler(unittest.TestCase):
 
     def tearDown(self):
         self.store.clear_results()
+
+    def test_instrument_one_call(self):
+        @self.instrument
+        def f():
+            pass
+
+        f()
+        callable_name = '.'.join([__name__, 'f'])
+
+        result = self.store.get_result(callable_name)
+        self.assertTrue(result)
