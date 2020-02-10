@@ -1,6 +1,15 @@
 import time as _time
+import inspect as _inspect
 
 from nutimeit._store import Store as _Store
+
+
+def instrument_module(m):
+    _decorate_module(m)
+    classes = _inspect.getmembers(m, _inspect.isclass)
+
+    for klass in classes:
+        _decorate_module(klass[1])
 
 
 def instrument(f):
