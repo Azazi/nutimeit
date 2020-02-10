@@ -23,3 +23,17 @@ class TestProfiler(unittest.TestCase):
 
         result = self.store.get_result(callable_name)
         self.assertTrue(result)
+
+    def test_instrument_multiple_calls(self):
+        @self.instrument
+        def f():
+            pass
+
+        calls = random.randint(2, 5)
+        callable_name = '.'.join([__name__, 'f'])
+        for i in range(calls):
+            f()
+
+        result = self.store.get_result(callable_name)
+        self.assertTrue(result)
+        self.assertEqual(result['count'], calls)
