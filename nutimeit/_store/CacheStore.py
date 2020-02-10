@@ -43,4 +43,6 @@ class CacheStore:
 
     @classmethod
     def clear_results(cls):
+        """Clears all results in the cache store.
+        """
         cls._results = dict()
