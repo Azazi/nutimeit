@@ -2,6 +2,8 @@ import random
 import string
 import unittest
 
+from nutimeit._store.models import Callable
+
 
 class StepDefinitions(unittest.TestCase):
     def generate_random_string(self, length=10):
@@ -18,3 +20,7 @@ class StepDefinitions(unittest.TestCase):
 
         self.store.update_result(_name, _time)
         return _name, _time
+
+    def there_is_a_callable(self, name=None):
+        _name = name or self.generate_random_string()
+        return Callable(_name)
