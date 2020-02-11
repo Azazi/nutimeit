@@ -1,8 +1,7 @@
-import random
-import unittest
+from tests.StepDefinitions import StepDefinitions
 
 
-class TestProfiler(unittest.TestCase):
+class TestProfiler(StepDefinitions):
     def setUp(self):
         from nutimeit.profiler import instrument
         from nutimeit._store import Store
@@ -29,7 +28,7 @@ class TestProfiler(unittest.TestCase):
         def f():
             pass
 
-        calls = random.randint(2, 5)
+        calls = self.generate_random_int()
         callable_name = '.'.join([__name__, 'f'])
         for i in range(calls):
             f()
