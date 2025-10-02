@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.1.0](https://github.com/Azazi/nutimeit/compare/v1.0.0...v1.1.0) (2025-10-02)
+
+
+### Features
+
+* add hotfix channel ([fbca786](https://github.com/Azazi/nutimeit/commit/fbca786287320e2bd2b04909a6a40ced8c649c8d))
+
 # [1.1.0-next.1](https://github.com/Azazi/nutimeit/compare/v1.0.0...v1.1.0-next.1) (2025-10-02)
 
 
