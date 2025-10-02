@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/Azazi/nutimeit/compare/v1.1.0...v1.1.1) (2025-10-02)
+
+
+### Bug Fixes
+
+* add noop4 (merge commit message) ([39f14a9](https://github.com/Azazi/nutimeit/commit/39f14a9baa7c359607cef8f5fa9c476cab6c3ff8))
+
 # [1.1.0](https://github.com/Azazi/nutimeit/compare/v1.0.0...v1.1.0) (2025-10-02)
 
 
