@@ -1,12 +1,5 @@
 # Changelog
 
-# [1.3.0-next.1](https://github.com/Azazi/nutimeit/compare/v1.2.1...v1.3.0-next.1) (2025-10-02)
-
-
-### Features
-
-* add noop8 ([#21](https://github.com/Azazi/nutimeit/issues/21)) ([3cb4949](https://github.com/Azazi/nutimeit/commit/3cb49499b148d7a91669dfe144f4e29b4a6ba8db))
-
 ## [1.2.1](https://github.com/Azazi/nutimeit/compare/v1.2.0...v1.2.1) (2025-10-02)
 
 
