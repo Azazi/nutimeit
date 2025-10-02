@@ -9,19 +9,10 @@ inputs:
     description: 'Name of the next (version) branch to sync to.'
     required: true
     default: 'next'
-  deploy_key:
-    description: 'SSH deploy key for pushing changes (optional, only needed if branches are protected).'
-    required: false
 
 runs:
   using: "composite"
   steps:
-    - name: Checkout Next branch
-      uses: actions/checkout@v4
-      with:
-        ref: ${{ inputs.next_branch }}
-        fetch-depth: 0
-        ssh-key: ${{ inputs.deploy_key }}
     - name: Configure Git
       shell: bash
       run: |

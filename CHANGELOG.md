@@ -1,12 +1,5 @@
 # Changelog
 
-# [1.4.0-next.1](https://github.com/Azazi/nutimeit/compare/v1.3.1...v1.4.0-next.1) (2025-10-02)
-
-
-### Features
-
-* add actions ([#27](https://github.com/Azazi/nutimeit/issues/27)) ([e7c6828](https://github.com/Azazi/nutimeit/commit/e7c6828606352977a29b019c9ccac043b31f5afb))
-
 ## [1.3.1](https://github.com/Azazi/nutimeit/compare/v1.3.0...v1.3.1) (2025-10-02)
 
 
