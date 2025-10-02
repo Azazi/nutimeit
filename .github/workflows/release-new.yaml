@@ -48,3 +48,4 @@ jobs:
           main_branch: master
           next_branch: next
           deploy_key: ${{ secrets.DEPLOY_KEY }}
+
