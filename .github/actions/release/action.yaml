@@ -1,0 +1,39 @@
+name: Release
+
+inputs:
+  deploy_key:
+    description: 'SSH deploy key for pushing changes (optional, only needed if branches are protected).'
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        fetch-tags: true
+        ssh-key: ${{ inputs.deploy_key }}
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+    - name: Install semantic-release Dependencies
+      shell: bash
+      run: |
+        npm i -D semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @google/semantic-release-replace-plugin @semantic-release/git @semantic-release/github
+    - name: Run semantic-release
+      env:
+        GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+      shell: bash
+      run: |
+        npx semantic-release
+    - name: Extract version
+      id: extract
+      shell: bash
+      run: |
+        TAG=$(git describe --tags --abbrev=0)
+        echo "version=${TAG#v}" >> $GITHUB_OUTPUT
+    - name: Show version
+      shell: bash
+      run: echo "Released version ${{ steps.extract.outputs.version }}"
