@@ -1,6 +1,6 @@
 # Changelog
 
-# [1.3.0-next.1](https://github.com/Azazi/nutimeit/compare/v1.2.1...v1.3.0-next.1) (2025-10-02)
+# [1.3.0](https://github.com/Azazi/nutimeit/compare/v1.2.1...v1.3.0) (2025-10-02)
 
 
 ### Features
