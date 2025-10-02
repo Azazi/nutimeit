@@ -1,0 +1,85 @@
+name: Release
+on:
+  push:
+    branches:
+      - master
+      - next
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+  deployments: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Install semantic-release dependencies
+        run: npm i -D semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @google/semantic-release-replace-plugin @semantic-release/git @semantic-release/github
+      - name: Run semantic-release
+        id: sr
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release
+      - name: Extract version
+        id: extract
+        if: steps.sr.outcome == 'success'
+        run: |
+          TAG=$(git describe --tags --abbrev=0)
+          echo "version=${TAG#v}" >> $GITHUB_OUTPUT
+      - name: Show version
+        if: steps.sr.outcome == 'success'
+        run: echo "Released version ${{ steps.extract.outputs.version }}"
+
+  sync:
+    name: Sync master and next
+    runs-on: ubuntu-latest
+    needs: release
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: next
+          fetch-depth: 0
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Merge master into next
+        run: |
+          git fetch origin master
+          set +e
+          git merge --no-ff --no-edit -X theirs origin/master
+          if [ $? -eq 0 ]; then
+            echo "Merge succeeded, pushing changes..."
+            git commit --allow-empty -m "Sync master into next"
+            git push origin next
+            exit 0
+          else
+            echo "Merge failed, likely due to conflicts. Please resolve manually."
+            exit 1
+          fi
+      - name: Create Pull Request from next to master
+        if: failure()
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: next
+          branch: sync/master-to-next
+          title: "Sync master into next"
+          body: "Automated PR to sync master into next branch."
+          commit-message: "Sync master into next"
