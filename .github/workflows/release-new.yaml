@@ -1,4 +1,4 @@
-name: Release (Action Based)
+name: Release
 on:
   push:
     branches:
@@ -19,12 +19,6 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          fetch-tags: true
-          ssh-key: ${{ secrets.DEPLOY_KEY }}
       - name: Release
         uses: ./.github/actions/release/action.yaml
         with:
@@ -36,12 +30,6 @@ jobs:
     needs: release
     if: github.ref == 'refs/heads/master'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: next
-          fetch-depth: 0
-          ssh-key: ${{ secrets.DEPLOY_KEY }}
       - name: Sync master and next
         uses: ./.github/actions/sync/action.yaml
         with:
