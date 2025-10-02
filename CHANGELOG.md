@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.2.0](https://github.com/Azazi/nutimeit/compare/v1.1.2...v1.2.0) (2025-10-02)
+
+
+### Features
+
+* add noop5 ([aa57db5](https://github.com/Azazi/nutimeit/commit/aa57db5162e65e1fcc222dd90ed4ac41bb11267e))
+
 # [1.2.0-next.2](https://github.com/Azazi/nutimeit/compare/v1.2.0-next.1...v1.2.0-next.2) (2025-10-02)
 
 
