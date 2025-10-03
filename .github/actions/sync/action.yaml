@@ -1,0 +1,48 @@
+name: Sync Branches
+
+inputs:
+  main_branch:
+    description: 'Name of the main branch to sync from.'
+    required: true
+    default: 'main'
+  next_branch:
+    description: 'Name of the next (version) branch to sync to.'
+    required: true
+    default: 'next'
+  github_token:
+    description: 'GitHub token for authentication.'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Configure Git
+      shell: bash
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+    - name: Merge Main into Next
+      shell: bash
+      run: |
+        git fetch origin ${{ inputs.main_branch }}
+        set +e
+        git merge --no-ff --no-edit -X theirs origin/${{ inputs.main_branch }}
+        if [ $? -eq 0 ]; then
+          echo "Merge succeeded, pushing changes..."
+          git commit --allow-empty -m "Sync ${{ inputs.main_branch }} into ${{ inputs.next_branch }}"
+          git push origin ${{ inputs.next_branch }}
+          exit 0
+        else
+          echo "Merge failed, likely due to conflicts. Please resolve manually."
+          exit 1
+        fi
+    - name: Create Pull Request from Next to Main
+      if: failure()
+      uses: peter-evans/create-pull-request@v7
+      with:
+        token: ${{ inputs.github_token }}
+        base: ${{ inputs.next_branch }}
+        branch: sync/${{ inputs.main_branch }}-to-${{ inputs.next_branch }}
+        title: "Sync ${{ inputs.main_branch }} into ${{ inputs.next_branch }}"
+        body: "Automated PR to sync ${{ inputs.main_branch }} into ${{ inputs.next_branch }} branch."
+        commit-message: "Sync ${{ inputs.main_branch }} into ${{ inputs.next_branch }}"

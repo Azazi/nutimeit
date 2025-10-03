@@ -3,6 +3,7 @@ module.exports = {
     "master",
     { name: "next", prerelease: true },
     { name: "hotfix/*", channel: "patch" },
+    { name: "rc/*", channel: "rc", prerelease: "rc" },
   ],
   plugins: [
     "@semantic-release/commit-analyzer",
