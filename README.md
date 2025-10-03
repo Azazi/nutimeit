@@ -1,3 +1,3 @@
 # nutimeit
 
-Version 1.5.5
+Version 1.6.0-next.1
