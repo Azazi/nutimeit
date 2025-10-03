@@ -1,5 +1,33 @@
 # Changelog
 
+## [1.5.3](https://github.com/Azazi/nutimeit/compare/v1.5.2...v1.5.3) (2025-10-03)
+
+
+### Bug Fixes
+
+* noop13 ([#45](https://github.com/Azazi/nutimeit/issues/45)) ([b80af4b](https://github.com/Azazi/nutimeit/commit/b80af4b145aef47222c5ce2d1af6c2109be85a57))
+
+## [1.5.2](https://github.com/Azazi/nutimeit/compare/v1.5.1...v1.5.2) (2025-10-03)
+
+
+### Bug Fixes
+
+* noop12 ([#43](https://github.com/Azazi/nutimeit/issues/43)) ([7c1566e](https://github.com/Azazi/nutimeit/commit/7c1566ec6b062cc32acf090298c8c6e0d994d1b9))
+
+## [1.5.2-next.1](https://github.com/Azazi/nutimeit/compare/v1.5.1...v1.5.2-next.1) (2025-10-03)
+
+
+### Bug Fixes
+
+* noop12 ([#43](https://github.com/Azazi/nutimeit/issues/43)) ([7c1566e](https://github.com/Azazi/nutimeit/commit/7c1566ec6b062cc32acf090298c8c6e0d994d1b9))
+
+## [1.5.1](https://github.com/Azazi/nutimeit/compare/v1.5.0...v1.5.1) (2025-10-03)
+
+
+### Bug Fixes
+
+* noop11 ([#41](https://github.com/Azazi/nutimeit/issues/41)) ([fb660da](https://github.com/Azazi/nutimeit/commit/fb660da4dac7f606a6743aa67a832202effb0d4e))
+
 ## [1.5.1-next.1](https://github.com/Azazi/nutimeit/compare/v1.5.0...v1.5.1-next.1) (2025-10-03)
 
 
