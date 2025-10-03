@@ -28,7 +28,7 @@ jobs:
       - name: Release
         uses: ./.github/actions/release
         with:
-          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
   sync:
     name: Sync master and next
@@ -47,5 +47,5 @@ jobs:
         with:
           main_branch: master
           next_branch: next
-          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
