@@ -13,7 +13,7 @@ runs:
         npm i -D semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @google/semantic-release-replace-plugin @semantic-release/git @semantic-release/github
     - name: Run semantic-release
       env:
-        GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       shell: bash
       run: |
         npx semantic-release
