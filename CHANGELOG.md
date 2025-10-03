@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1-next.1](https://github.com/Azazi/nutimeit/compare/v1.5.0...v1.5.1-next.1) (2025-10-03)
+
+
+### Bug Fixes
+
+* noop11 ([#41](https://github.com/Azazi/nutimeit/issues/41)) ([fb660da](https://github.com/Azazi/nutimeit/commit/fb660da4dac7f606a6743aa67a832202effb0d4e))
+
 # [1.5.0](https://github.com/Azazi/nutimeit/compare/v1.4.2...v1.5.0) (2025-10-03)
 
 
