@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.6.0](https://github.com/Azazi/nutimeit/compare/v1.5.5...v1.6.0) (2025-10-03)
+
+
+### Features
+
+* rc for real ([#52](https://github.com/Azazi/nutimeit/issues/52)) ([c951594](https://github.com/Azazi/nutimeit/commit/c951594d79e344691fa1c44146c1e8d5527f85c0))
+
 # [1.6.0-next.1](https://github.com/Azazi/nutimeit/compare/v1.5.5...v1.6.0-next.1) (2025-10-03)
 
 
