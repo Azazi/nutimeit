@@ -1,11 +1,11 @@
 # Changelog
 
-## [1.5.4-next.2](https://github.com/Azazi/nutimeit/compare/v1.5.4-next.1...v1.5.4-next.2) (2025-10-03)
+## [1.5.4](https://github.com/Azazi/nutimeit/compare/v1.5.3...v1.5.4) (2025-10-03)
 
 
 ### Bug Fixes
 
-* add noop15 ([#47](https://github.com/Azazi/nutimeit/issues/47)) ([e472541](https://github.com/Azazi/nutimeit/commit/e47254190c3676557ff6724584d99ac52155f321))
+* noop14 ([#46](https://github.com/Azazi/nutimeit/issues/46)) ([9d3a771](https://github.com/Azazi/nutimeit/commit/9d3a771f8c2d93d3843a38154ee84ec217a9bfee))
 
 ## [1.5.4-next.1](https://github.com/Azazi/nutimeit/compare/v1.5.3...v1.5.4-next.1) (2025-10-03)
 
