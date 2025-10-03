@@ -1,5 +1,17 @@
 # Changelog
 
+# [1.4.0-next.2](https://github.com/Azazi/nutimeit/compare/v1.4.0-next.1...v1.4.0-next.2) (2025-10-03)
+
+
+### Bug Fixes
+
+* checkout before action ([#28](https://github.com/Azazi/nutimeit/issues/28)) ([47e3b87](https://github.com/Azazi/nutimeit/commit/47e3b872bf1fedde5780a63092b59566fccf5948))
+* checkout before action ([#29](https://github.com/Azazi/nutimeit/issues/29)) ([4ff58a2](https://github.com/Azazi/nutimeit/commit/4ff58a2c0ab657a1840030a8facb69279d18b87e))
+* path ([#31](https://github.com/Azazi/nutimeit/issues/31)) ([846b7e2](https://github.com/Azazi/nutimeit/commit/846b7e2cd63184677ea5c52ed5d8bf031cc1d1ff))
+* secret ([#33](https://github.com/Azazi/nutimeit/issues/33)) ([9ca52c6](https://github.com/Azazi/nutimeit/commit/9ca52c6645135c0c11770e5ed52ce2fa5200c994))
+* secrets ([#32](https://github.com/Azazi/nutimeit/issues/32)) ([85f1d6d](https://github.com/Azazi/nutimeit/commit/85f1d6dc4e69812e5e5c908ef1c4f24455a26469))
+* space ([#30](https://github.com/Azazi/nutimeit/issues/30)) ([beef6cb](https://github.com/Azazi/nutimeit/commit/beef6cbe3e205e4099fc1f61a256acd23ef361b8))
+
 ## [1.3.1](https://github.com/Azazi/nutimeit/compare/v1.3.0...v1.3.1) (2025-10-02)
 
 
