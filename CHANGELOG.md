@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.5.0-next.1](https://github.com/Azazi/nutimeit/compare/v1.4.2...v1.5.0-next.1) (2025-10-03)
+
+
+### Features
+
+* add rc track ([#39](https://github.com/Azazi/nutimeit/issues/39)) ([3c8bfeb](https://github.com/Azazi/nutimeit/commit/3c8bfebccbea79a27d3418353f817fb51a5fe87a))
+
 ## [1.4.2](https://github.com/Azazi/nutimeit/compare/v1.4.1...v1.4.2) (2025-10-03)
 
 
