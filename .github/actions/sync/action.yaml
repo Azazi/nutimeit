@@ -9,6 +9,9 @@ inputs:
     description: 'Name of the next (version) branch to sync to.'
     required: true
     default: 'next'
+  github_token:
+    description: 'GitHub token for authentication.'
+    required: true
 
 runs:
   using: "composite"
@@ -37,7 +40,7 @@ runs:
       if: failure()
       uses: peter-evans/create-pull-request@v7
       with:
-        token: ${{ env.GITHUB_TOKEN }}
+        token: ${{ inputs.github_token }}
         base: ${{ inputs.next_branch }}
         branch: sync/${{ inputs.main_branch }}-to-${{ inputs.next_branch }}
         title: "Sync ${{ inputs.main_branch }} into ${{ inputs.next_branch }}"
