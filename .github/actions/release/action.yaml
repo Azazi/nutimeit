@@ -1,0 +1,33 @@
+name: Release
+
+inputs:
+  github_token:
+    description: 'GitHub token for authentication.'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+    - name: Install semantic-release Dependencies
+      shell: bash
+      run: |
+        npm i -D semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @google/semantic-release-replace-plugin @semantic-release/git @semantic-release/github
+    - name: Run semantic-release
+      env:
+        GITHUB_TOKEN: ${{ inputs.github_token }}
+      shell: bash
+      run: |
+        npx semantic-release
+    - name: Extract version
+      id: extract
+      shell: bash
+      run: |
+        TAG=$(git describe --tags --abbrev=0)
+        echo "version=${TAG#v}" >> $GITHUB_OUTPUT
+    - name: Show version
+      shell: bash
+      run: echo "Released version ${{ steps.extract.outputs.version }}"
