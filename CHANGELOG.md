@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.0-next.1](https://github.com/Azazi/nutimeit/compare/v2.0.0...v2.1.0-next.1) (2025-10-06)
+
+### Features
+
+* pr title lint ([#67](https://github.com/Azazi/nutimeit/issues/67)) ([ee40862](https://github.com/Azazi/nutimeit/commit/ee408625d266a845756b0b456880d11110c4b494))
+
 ## [2.0.0](https://github.com/Azazi/nutimeit/compare/v1.6.2...v2.0.0) (2025-10-06)
 
 ### ⚠ BREAKING CHANGES
