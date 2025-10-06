@@ -13,6 +13,8 @@ jobs:
   lint-title:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
       - name: Enforce PR title rules
         uses: ./.github/actions/pr-title-lint
         with:
