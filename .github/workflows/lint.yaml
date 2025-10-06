@@ -1,0 +1,21 @@
+name: PR Title Check
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  lint-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enforce PR title rules
+        uses: ./.github/actions/pr-title-lint
+        with:
+          target_next: next
+          target_main: master
+          hotfix_prefix: hotfix/
