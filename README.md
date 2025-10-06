@@ -1,3 +1,3 @@
 # nutimeit
 
-Version 2.0.0-next.2
+Version 2.0.0-rc.1

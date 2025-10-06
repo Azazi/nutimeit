@@ -1,5 +1,27 @@
 # Changelog
 
+## [2.0.0-rc.1](https://github.com/Azazi/nutimeit/compare/v1.6.2...v2.0.0-rc.1) (2025-10-06)
+
+### ⚠ BREAKING CHANGES
+
+* conventional commits (#63)
+* conventional commits (#62)
+* add noop20 (#58)
+* add noop19 (#57)
+
+### Features
+
+* add noop19 ([#57](https://github.com/Azazi/nutimeit/issues/57)) ([a006fe5](https://github.com/Azazi/nutimeit/commit/a006fe5d536c65d7931005b41489d194f17fa1b6))
+* add noop20 ([#58](https://github.com/Azazi/nutimeit/issues/58)) ([96d6c87](https://github.com/Azazi/nutimeit/commit/96d6c878b12d873b892ba379137deb78f15ac281))
+* conventional commits ([#62](https://github.com/Azazi/nutimeit/issues/62)) ([e8c5a36](https://github.com/Azazi/nutimeit/commit/e8c5a36bbb79239b4bc0537347eef18a4b4add85))
+* conventional commits ([#63](https://github.com/Azazi/nutimeit/issues/63)) ([6d0228a](https://github.com/Azazi/nutimeit/commit/6d0228a1cf1ef13ef3c3ec4f28008bdec51ef510))
+
+### Bug Fixes
+
+* add noop18 ([#56](https://github.com/Azazi/nutimeit/issues/56)) ([b88571d](https://github.com/Azazi/nutimeit/commit/b88571d50687bee95e2e28ec08e967633762a474))
+* add noop22 ([#60](https://github.com/Azazi/nutimeit/issues/60)) ([f71f239](https://github.com/Azazi/nutimeit/commit/f71f239ccc2815fffb3b42b7c4361815705f013b))
+* add noop22 ([#61](https://github.com/Azazi/nutimeit/issues/61)) ([8028442](https://github.com/Azazi/nutimeit/commit/8028442bcd6c11aac76149abf28d94a563cd4172))
+
 ## [2.0.0-next.2](https://github.com/Azazi/nutimeit/compare/v2.0.0-next.1...v2.0.0-next.2) (2025-10-06)
 
 ### Bug Fixes
