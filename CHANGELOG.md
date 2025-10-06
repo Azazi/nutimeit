@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.0-next.1](https://github.com/Azazi/nutimeit/compare/v1.6.2-next.2...v2.0.0-next.1) (2025-10-06)
+
+### ⚠ BREAKING CHANGES
+
+* conventional commits (#63)
+* conventional commits (#62)
+
+### Features
+
+* conventional commits ([#62](https://github.com/Azazi/nutimeit/issues/62)) ([e8c5a36](https://github.com/Azazi/nutimeit/commit/e8c5a36bbb79239b4bc0537347eef18a4b4add85))
+* conventional commits ([#63](https://github.com/Azazi/nutimeit/issues/63)) ([6d0228a](https://github.com/Azazi/nutimeit/commit/6d0228a1cf1ef13ef3c3ec4f28008bdec51ef510))
+
 ## [1.6.2-next.2](https://github.com/Azazi/nutimeit/compare/v1.6.2-next.1...v1.6.2-next.2) (2025-10-06)
 
 
