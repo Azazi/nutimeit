@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.2-next.2](https://github.com/Azazi/nutimeit/compare/v1.6.2-next.1...v1.6.2-next.2) (2025-10-06)
+
+
+### Bug Fixes
+
+* add noop22 ([#60](https://github.com/Azazi/nutimeit/issues/60)) ([f71f239](https://github.com/Azazi/nutimeit/commit/f71f239ccc2815fffb3b42b7c4361815705f013b))
+* add noop22 ([#61](https://github.com/Azazi/nutimeit/issues/61)) ([8028442](https://github.com/Azazi/nutimeit/commit/8028442bcd6c11aac76149abf28d94a563cd4172))
+
 ## [1.6.2-next.1](https://github.com/Azazi/nutimeit/compare/v1.6.1...v1.6.2-next.1) (2025-10-03)
 
 
