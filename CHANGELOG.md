@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.1-rc.1](https://github.com/Azazi/nutimeit/compare/v2.2.0...v2.2.1-rc.1) (2025-10-09)
+
+### Bug Fixes
+
+* add noop32 ([#77](https://github.com/Azazi/nutimeit/issues/77)) ([d466f2c](https://github.com/Azazi/nutimeit/commit/d466f2cae247a34b8d974e23bca861542a41f9ad))
+
+## [2.2.1-next.1](https://github.com/Azazi/nutimeit/compare/v2.2.0...v2.2.1-next.1) (2025-10-09)
+
+### Bug Fixes
+
+* add noop32 ([#77](https://github.com/Azazi/nutimeit/issues/77)) ([d466f2c](https://github.com/Azazi/nutimeit/commit/d466f2cae247a34b8d974e23bca861542a41f9ad))
+
 ## [2.2.0-rc.1](https://github.com/Azazi/nutimeit/compare/v2.1.0...v2.2.0-rc.1) (2025-10-09)
 
 ### Features
