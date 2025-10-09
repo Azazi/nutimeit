@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.0-next.2](https://github.com/Azazi/nutimeit/compare/v2.2.0-next.1...v2.2.0-next.2) (2025-10-09)
+
+### Bug Fixes
+
+* ismaster ([#75](https://github.com/Azazi/nutimeit/issues/75)) ([dd13724](https://github.com/Azazi/nutimeit/commit/dd13724d2071f83d9d4b15ca85ea839ea8f938c5))
+
 ## [2.1.0-next.2](https://github.com/Azazi/nutimeit/compare/v2.1.0-next.1...v2.1.0-next.2) (2025-10-09)
 
 ### Features
