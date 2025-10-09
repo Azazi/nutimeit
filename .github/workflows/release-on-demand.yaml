@@ -1,0 +1,30 @@
+name: Release (Action Based)
+on:
+# trigger on comments
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+  deployments: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    if: github.event.issue.pull_request != null && contains(github.event.comment.body, '/release')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
+      - name: Release
+        uses: ./.github/actions/release
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
