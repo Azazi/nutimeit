@@ -28,5 +28,19 @@ module.exports = {
       message: "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
     }],
     "@semantic-release/github"
+  ],
+
+  // Only run file-updating plugins on non-master branches
+  verifyConditions: [
+    {
+      path: require.resolve('@semantic-release/exec'),
+      cmd: 'if [ "$SEMANTIC_RELEASE_BRANCH" = "master" ]; then exit 0; fi'
+    }
+  ],
+  prepare: [
+    {
+      path: require.resolve('@semantic-release/exec'),
+      cmd: 'if [ "$SEMANTIC_RELEASE_BRANCH" = "master" ]; then exit 0; fi'
+    }
   ]
 };

@@ -15,7 +15,7 @@ runs:
     - name: Install semantic-release Dependencies
       shell: bash
       run: |
-        npm i -D semantic-release @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @google/semantic-release-replace-plugin @semantic-release/git @semantic-release/github conventional-changelog-conventionalcommits
+        npm i -D semantic-release @semantic-release/exec @semantic-release/commit-analyzer @semantic-release/release-notes-generator @semantic-release/changelog @google/semantic-release-replace-plugin @semantic-release/git @semantic-release/github conventional-changelog-conventionalcommits
     - name: Run semantic-release
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}

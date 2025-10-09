@@ -1,0 +1,156 @@
+name: "PR Title Lint (Conventional Commits-aware)"
+description: "Validate PR titles by base/head branch rules; comment + fail on mismatch."
+
+inputs:
+  target_next:
+    description: "Name of the prerelease target branch (e.g., next)"
+    required: false
+    default: "next"
+  target_main:
+    description: "Name of the main release branch (e.g., main)"
+    required: false
+    default: "main"
+  hotfix_prefix:
+    description: "Head branch prefix that denotes hotfix branches"
+    required: false
+    default: "hotfix/"
+  cc_header_regex:
+    description: "Regex for Conventional Commit header"
+    required: false
+    default: '^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-z0-9._/-]+\))?(!)?:\s.+$'
+  comment_marker:
+    description: "Hidden marker used to find/update the bot's previous comment"
+    required: false
+    default: '<!-- pr-title-lint -->'
+  fail_job:
+    description: "Fail the job when validation fails"
+    required: false
+    default: "true"
+  delete_passing_comment:
+    description: "Delete the previous failure comment when the title now passes"
+    required: false
+    default: "true"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Decide rule & validate title
+      id: decide
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        base='${{ github.event.pull_request.base.ref }}'
+        head='${{ github.event.pull_request.head.ref }}'
+        title='${{ github.event.pull_request.title }}'
+
+        target_next='${{ inputs.target_next }}'
+        target_main='${{ inputs.target_main }}'
+        hotfix_prefix='${{ inputs.hotfix_prefix }}'
+        cc_re='${{ inputs.cc_header_regex }}'
+
+        applies="none"
+        rule="none"
+
+        # Rules:
+        # A) * -> next       : must be CC
+        # B) hotfix/* -> main : must be CC
+        # C) !(hotfix/*) -> main : must NOT be CC
+        if [[ "$base" == "$target_next" ]]; then
+          applies="Rule A"
+          rule="cc"
+        elif [[ "$base" == "$target_main" && "$head" =~ ^${hotfix_prefix//\//\\/}.+ ]]; then
+          applies="Rule B"
+          rule="cc"
+        elif [[ "$base" == "$target_main" && ! "$head" =~ ^${hotfix_prefix//\//\\/}.+ ]]; then
+          applies="Rule C"
+          rule="not-cc"
+        fi
+
+        ok="1"
+        if [[ "$applies" != "none" ]]; then
+          if [[ "$rule" == "cc" ]]; then
+            if [[ "$title" =~ $cc_re ]]; then ok="1"; else ok="0"; fi
+          else
+            if [[ "$title" =~ $cc_re ]]; then ok="0"; else ok="1"; fi
+          fi
+        fi
+
+        {
+          echo "applies=$applies"
+          echo "rule=$rule"
+          echo "ok=$ok"
+          echo "title<<EOF"
+          echo "$title"
+          echo "EOF"
+          echo "cc_re=$cc_re"
+          echo "base=$base"
+          echo "head=$head"
+        } >> "$GITHUB_OUTPUT"
+
+    - name: Find existing lint comment (only if failing)
+      id: find
+      if: steps.decide.outputs.applies != 'none' && steps.decide.outputs.ok == '0'
+      uses: peter-evans/find-comment@v3
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
+        body-includes: ${{ inputs.comment_marker }}
+
+    - name: Create or update comment
+      if: steps.decide.outputs.applies != 'none' && steps.decide.outputs.ok == '0'
+      uses: peter-evans/create-or-update-comment@v4
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-id: ${{ steps.find.outputs.comment-id }}
+        edit-mode: replace
+        body: |
+          ${{ inputs.comment_marker }}
+          **PR Title Check failed**
+
+          **Rule:** ${{ steps.decide.outputs.applies }} (base → `${{ steps.decide.outputs.base }}`, head → `${{ steps.decide.outputs.head }}`)
+
+          **Your title**
+          ```
+          ${{ steps.decide.outputs.title }}
+          ```
+
+          **Expected**
+          ${{ steps.decide.outputs.rule == 'cc'
+              && 'Conventional Commit header (e.g., `feat(api): add passkeys`, `fix: correct typo`)'
+              || 'A non-Conventional Commit title (e.g., `Upgrade dependency foo`, `Bump version to 1.2.3`)'
+          }}
+
+          **Conventional Commit regex used**
+          ```
+          ${{ steps.decide.outputs.cc_re }}
+          ```
+
+          Please update the **PR title**. Editing the title will re-trigger this check.
+
+    - name: Delete previous failure comment (now passing)
+      if: steps.decide.outputs.applies != 'none' && steps.decide.outputs.ok == '1' && inputs.delete_passing_comment == 'true'
+      uses: peter-evans/find-comment@v3
+      id: find-pass
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        comment-author: 'github-actions[bot]'
+        body-includes: ${{ inputs.comment_marker }}
+
+    - name: Remove passing comment
+      if: steps.decide.outputs.applies != 'none' && steps.decide.outputs.ok == '1' && inputs.delete_passing_comment == 'true' && steps.find-pass.outputs.comment-id != ''
+      uses: actions/github-script@v7
+      with:
+        script: |
+          await github.rest.issues.deleteComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            comment_id: Number('${{ steps.find-pass.outputs.comment-id }}'),
+          });
+
+    - name: Fail job if invalid
+      if: steps.decide.outputs.applies != 'none' && steps.decide.outputs.ok == '0' && inputs.fail_job == 'true'
+      shell: bash
+      run: |
+        echo "PR title does not satisfy rule: ${{ steps.decide.outputs.applies }} (rule=${{ steps.decide.outputs.rule }})"
+        exit 1
