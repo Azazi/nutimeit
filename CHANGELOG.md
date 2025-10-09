@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.0-next.2](https://github.com/Azazi/nutimeit/compare/v2.1.0-next.1...v2.1.0-next.2) (2025-10-09)
+
+### Features
+
+* sr github pr  ([#68](https://github.com/Azazi/nutimeit/issues/68)) ([515a969](https://github.com/Azazi/nutimeit/commit/515a9699a36c24f2793207a7bacd397e58a4d025))
+
 ## [2.1.0-next.1](https://github.com/Azazi/nutimeit/compare/v2.0.0...v2.1.0-next.1) (2025-10-06)
 
 ### Features
